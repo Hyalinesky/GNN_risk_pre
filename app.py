@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, jsonify
-from neo_db.query_graph import query,queryf2,get_KGQA_answer,get_answer_profile
-from KGQA.ltp import get_target_array
+from neo_db.query_graph import query,queryf2
+
 app = Flask(__name__)
 
 
@@ -20,16 +20,13 @@ def search():
 def KGQA():
     return render_template('KGQA.html')
 @app.route('/get_profile',methods=['GET','POST'])
-def get_profile():
-    name = request.args.get('character_name')
-    json_data = get_answer_profile(name)
-    return jsonify(json_data)
+# def get_profile():
+#     name = request.args.get('character_name')
+#     json_data = get_answer_profile(name)
+#     return jsonify(json_data)
 
 @app.route('/KGQA_answer', methods=['GET', 'POST'])
-def KGQA_answer():
-    question = request.args.get('name')
-    json_data = get_KGQA_answer(get_target_array(str(question)))
-    return jsonify(json_data)
+
 @app.route('/search_name', methods=['GET', 'POST'])
 def search_name():
     # # 显示只有一阶邻居：

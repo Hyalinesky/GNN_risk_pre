@@ -1,5 +1,5 @@
 from neo_db.config import graph, CA_LIST, similar_words
-from spider.show_profile import get_profile
+# from spider.show_profile import get_profile
 import codecs
 import os
 import json
@@ -121,34 +121,34 @@ def get_json_data2(data):
     # print(json_data)
     return json_data
 
-def get_KGQA_answer(array):
-    data_array=[]
-    for i in range(len(array)-2):
-        if i==0:
-            name=array[0]
-        else:
-            name=data_array[-1]['p.Name']
+# def get_KGQA_answer(array):
+#     data_array=[]
+#     for i in range(len(array)-2):
+#         if i==0:
+#             name=array[0]
+#         else:
+#             name=data_array[-1]['p.Name']
            
-        data = graph.run(
-            "match(p)-[r:%s{relation: '%s'}]->(n:Company{Name:'%s'}) return  p.Name,n.Name,r.relation,p.cate,n.cate" % (
-                similar_words[array[i+1]], similar_words[array[i+1]], name)
-        )
+#         data = graph.run(
+#             "match(p)-[r:%s{relation: '%s'}]->(n:Company{Name:'%s'}) return  p.Name,n.Name,r.relation,p.cate,n.cate" % (
+#                 similar_words[array[i+1]], similar_words[array[i+1]], name)
+#         )
        
-        data = list(data)
-        print(data)
-        data_array.extend(data)
+#         data = list(data)
+#         print(data)
+#         data_array.extend(data)
         
-        print("==="*36)
-    with open("./spider/images/"+"%s.jpg" % (str(data_array[-1]['p.Name'])), "rb") as image:
-            base64_data = base64.b64encode(image.read())
-            b=str(base64_data)
+#         print("==="*36)
+#     with open("./spider/images/"+"%s.jpg" % (str(data_array[-1]['p.Name'])), "rb") as image:
+#             base64_data = base64.b64encode(image.read())
+#             b=str(base64_data)
           
-    return [get_json_data(data_array), get_profile(str(data_array[-1]['p.Name'])), b.split("'")[1]]
-def get_answer_profile(name):
-    with open("./spider/images/"+"%s.jpg" % (str(name)), "rb") as image:
-        base64_data = base64.b64encode(image.read())
-        b = str(base64_data)
-    return [get_profile(str(name)), b.split("'")[1]]
+#     return [get_json_data(data_array), get_profile(str(data_array[-1]['p.Name'])), b.split("'")[1]]
+# def get_answer_profile(name):
+#     with open("./spider/images/"+"%s.jpg" % (str(name)), "rb") as image:
+#         base64_data = base64.b64encode(image.read())
+#         b = str(base64_data)
+#     return [get_profile(str(name)), b.split("'")[1]]
 
 
 
