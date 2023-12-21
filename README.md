@@ -37,8 +37,9 @@
 
      1. 下载安装所需要的库 pip install -r requirement.txt
      2. 下载好neo4j图数据库，并配好环境（注意neo4j需要jdk8）。修改neo_db目录下的配置文件config.py,设置图数据库的账号和密码。
-     3. 切换到neo_db目录下，执行python create_graph.py 建立知识图谱
-     4. 运行python app.py,浏览器打开localhost:5000即可查看
+     3. 数据存入neo4j。进入knowledgegraph目录运行json2neo4j.py，将企业数据存入neo4j。也可以使用自己的数据。
+     4. 切换到neo_db目录下，执行python create_graph.py 建立知识图谱
+     5. 运行python app.py,浏览器打开localhost:5000即可查看
 
    - 训练模型
 
@@ -52,18 +53,16 @@
 
         2. 安装torchgeometric
 
-        ```bash
-        conda install pyg -c pyg -c conda-forge
-        ```
+            conda install pyg -c pyg -c conda-forge
 
-        ​	3. 下载torchgeometric其他工具离线安装包
+        3. 下载torchgeometric其他工具离线安装包
 
-        ​		https://pytorch-geometric.com/whl/
-        ​		安装四个包，注意对应关系
+        ​	https://pytorch-geometric.com/whl/
+        ​	安装四个包，注意对应关系
 
         4. pip install XXX.whl
 
-     2. （可选）运行GNN/dataset.py 创建数据集
+     2. （可选）运行GNN/dataset.py 创建自己的数据集
 
      3. 运行GNN/GCN.py 训练
 
