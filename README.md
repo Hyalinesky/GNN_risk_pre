@@ -1,4 +1,4 @@
-# 基于大数据和知识图谱的企业风险预测平台
+# 图神经网络预测企业风险
 
 1. 文件树
 
@@ -29,6 +29,7 @@
 │      search.html  搜索界面
 │      
 10.└─校徽  校徽图标库
+11.images 存放镜像
 ```
 
 2. 操作流程
@@ -57,16 +58,69 @@
 
         3. 下载torchgeometric其他工具离线安装包
 
-        ​	https://pytorch-geometric.com/whl/
-        ​	安装四个包，注意对应关系
+            https://pytorch-geometric.com/whl/
+            ​安装四个包，注意对应关系
 
         4. pip install XXX.whl
 
      2. （可选）运行GNN/dataset.py 创建自己的数据集
 
-     3. 运行GNN/GCN.py 训练
+     3. 运行GCN.py 训练
 
         
 
+   3. 镜像
+
+      - 平台+数据库
+
+        - 镜像保存在/images中，在当前目录中使用命令，将镜像导入到docker中
+
+          ```shell
+          docker load -i images-neo4j.tar
+          docker load -i images-web.tar
+          ```
+        
+        - 执行docker-compose.yml
+        
+          ```shell
+          docker-compose up
+          ```
+        
+        - 该过程耗时较长（配置代理之后352.7s左右），并且由于国外镜像的缘故，可能下载速度较慢。
+        
+          可以为本机配置docker镜像代理
+        
+        - 访问项目
+        
+          [http://localhost:5000](http://localhost:5000)
+          
+          
+        
+      
+   
+      - GNN模型训练
+   
+        - 镜像保存在/images中，在当前目录中使用命令，将镜像导入到docker中
+      
+          ```shell
+          docker load -i /images/gnn_model.tar
+          ```
+   
+        - 然后使用docker run来运行镜像
+      
+          ```shell
+          docker run --name gnns -it gnn_model /bin/bash
+          ```
+   
+        - 运行完成之后，使用命令训练：
+      
+          ```shell
+          python3 GCN.py
+          ```
 
 
+​          
+
+​        
+
+​        
