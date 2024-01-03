@@ -71,6 +71,12 @@
 
 3. 镜像
 
+   由于镜像文件较大，因此上传到百度网盘：
+
+   链接：https://pan.baidu.com/s/1TK3GJ3Gy0atthIUy23GIIA?pwd=hc5a 
+   提取码：hc5a 
+   --来自百度网盘超级会员V2的分享
+
    - 平台+数据库
 
      - 镜像保存在/images中，在当前目录中使用命令，将镜像导入到docker中
