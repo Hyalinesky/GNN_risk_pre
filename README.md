@@ -69,54 +69,54 @@
 
         
 
-   3. 镜像
+3. 镜像
 
-      - 平台+数据库
+   - 平台+数据库
 
-        - 镜像保存在/images中，在当前目录中使用命令，将镜像导入到docker中
+     - 镜像保存在/images中，在当前目录中使用命令，将镜像导入到docker中
 
-          ```shell
-          docker load -i images-neo4j.tar
-          docker load -i images-web.tar
-          ```
-        
-        - 执行docker-compose.yml
-        
-          ```shell
-          docker-compose up
-          ```
-        
-        - 该过程耗时较长（配置代理之后352.7s左右），并且由于国外镜像的缘故，可能下载速度较慢。
-        
-          可以为本机配置docker镜像代理
-        
-        - 访问项目
-        
-          [http://localhost:5000](http://localhost:5000)
-          
-          
-        
-      
-   
-      - GNN模型训练
-   
-        - 镜像保存在/images中，在当前目录中使用命令，将镜像导入到docker中
-      
-          ```shell
-          docker load -i /images/gnn_model.tar
-          ```
-   
-        - 然后使用docker run来运行镜像
-      
-          ```shell
-          docker run --name gnns -it gnn_model /bin/bash
-          ```
-   
-        - 运行完成之后，使用命令训练：
-      
-          ```shell
-          python3 GCN.py
-          ```
+       ```shell
+       docker load -i images-neo4j.tar
+       docker load -i images-web.tar
+       ```
+     
+     - 执行docker-compose.yml
+     
+       ```shell
+       docker-compose up
+       ```
+     
+     - 该过程耗时较长（配置代理之后352.7s左右），并且由于国外镜像的缘故，可能下载速度较慢。
+     
+       可以为本机配置docker镜像代理
+     
+     - 访问项目
+     
+       [http://localhost:5000](http://localhost:5000)
+       
+       
+     
+
+
+   - GNN模型训练
+
+     - 镜像保存在/images中，在当前目录中使用命令，将镜像导入到docker中
+
+       ```shell
+       docker load -i /images/gnn_model.tar
+       ```
+
+     - 然后使用docker run来运行镜像
+
+       ```shell
+       docker run --name gnns -it gnn_model /bin/bash
+       ```
+
+     - 运行完成之后，使用命令训练：
+
+       ```shell
+       python3 GCN.py
+       ```
 
 
 ​          
